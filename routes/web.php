@@ -32,10 +32,17 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+// ADMIN
 Route::middleware(['auth','role:admin'])->group(function(){
-    Route::get('/admin/dashboard', [AdminController::class, 'AdminDashoard'])->name('admin.dashoard');
+    Route::get('/admin/dashboard', [AdminController::class, 'AdminDashoard'])->name('admin.dashboard');
+    Route::get('/admin/logout', [AdminController::class, 'AdminDestroy'])->name('admin.logout');
+    Route::get('/admin/profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
 });
 
+Route::get('/admin/login', [AdminController::class, 'AdminLogin']);
+
+
+// SELLER
 Route::middleware(['auth','role:seller'])->group(function(){
     Route::get('/seller/dashboard', [SellerController::class, 'SellerDashboard'])->name('seller.dashoard'); 
 });
