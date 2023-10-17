@@ -44,9 +44,15 @@ Route::middleware(['auth','role:admin'])->group(function(){
 });
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin']);
+Route::get('/seller/login', [SellerController::class, 'SellerLogin']);
 
 
 // SELLER
 Route::middleware(['auth','role:seller'])->group(function(){
-    Route::get('/seller/dashboard', [SellerController::class, 'SellerDashboard'])->name('seller.dashoard'); 
+    Route::get('/seller/dashboard', [SellerController::class, 'SellerDashboard'])->name('seller.dashboard'); 
+    Route::get('/seller/logout', [SellerController::class, 'SellerDestroy'])->name('seller.logout');
+    Route::get('/seller/profile', [SellerController::class, 'SellerProfile'])->name('seller.profile');
+    Route::post('/seller/profile/store', [SellerController::class, 'SellerProfileStore'])->name('seller.profile.store');
+    Route::get('/seller/change/password', [SellerController::class, 'SellerChangePassword'])->name('seller.change.password');
+    Route::post('/seller/update/password', [SellerController::class, 'SellerUpdatePassword'])->name('update.password');
 });
