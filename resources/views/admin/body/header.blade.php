@@ -322,18 +322,22 @@
                     </li>
                 </ul>
             </div>
+            @php
+                $id = Auth::user()->id;
+                $adminData = App\Models\User::find($id);
+            @endphp
             <div class="user-box dropdown">
                 <a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="{{ asset('adminbackend/assets/images/avatars/avatar-2.png') }}" class="user-img" alt="user avatar">
+                    <img id="showImage" src="{{ (!empty($adminData->photo)) ? url('upload/admin_images/'.$adminData->photo) : url('upload/no_image.jpg') }}" class="user-img" alt="Admin">
                     <div class="user-info ps-3">
                         <p class="user-name mb-0">{{Auth::user()->name}}</p>
                         <p class="designattion mb-0">{{Auth::user()->username}}</p>
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="{{ route('admin.profile') }}"><i class="bx bx-user"></i><span>Profile</span></a>
+                    <li><a class="dropdown-item" href="{{ route('admin.profile') }}"><i class="bx bx-user"></i><span>Mon Profil</span></a>
                     </li>
-                    <li><a class="dropdown-item" href="{{ route('admin.profile') }}"><i class="bx bx-cog"></i><span>Settings</span></a>
+                    <li><a class="dropdown-item" href="{{ route('admin.change.password') }}"><i class="bx bx-cog"></i><span>Changer le mot de passe</span></a>
                     </li>
                     <li><a class="dropdown-item" href="{{ route('admin.profile') }}"><i class='bx bx-home-circle'></i><span>Dashboard</span></a>
                     </li>
