@@ -83,4 +83,8 @@ class AdminController extends Controller
 
         return back()->with('status', "Mot de passe changé avec succèss!");
     }//end function
+
+    public function Welcome(){
+        return view('welcome');
+    }
 }
