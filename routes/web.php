@@ -20,6 +20,8 @@ Route::get('/', function () {
     return view('frontend.index');
 });
 
+Route::get('/welcome', [AdminController::class, 'Welcome']);
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
