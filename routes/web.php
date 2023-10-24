@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\backend\CategoryController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -28,13 +29,9 @@ Route::get('/welcome', [AdminController::class, 'Welcome']);
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::get('/dashboard', [UserController::class, 'UserDashboard']);
+    Route::get('/dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
     Route::post('/dashboard/store', [UserController::class, 'UserProfileStore'])->name('user.dashboard.store');
     Route::get('/dashboard/logout', [UserController::class, 'UserDestroy'])->name('user.logout');
-
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 require __DIR__.'/auth.php';
@@ -47,12 +44,21 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::post('/admin/profile/store', [AdminController::class, 'AdminProfileStore'])->name('admin.profile.store');
     Route::get('/admin/change/password', [AdminController::class, 'AdminChangePassword'])->name('admin.change.password');
     Route::post('/admin/update/password', [AdminController::class, 'AdminUpdatePassword'])->name('update.password');
+
+    // Backend
+
+    // Categories
+    Route::controller(CategoryController::class)->group(function(){
+        Route::get('/all/categories', 'AllCategories')->name('all.categories');
+        Route::get('/add/category', 'AddCategories')->name('add.category');
+        Route::get('/edit/category/{id}', 'EditCategory')->name('category.edit');
+        Route::post('/category/store', 'AddCategory')->name('category.store');
+        Route::post('update/category', 'UpdateCategory')->name('category.update');
+        Route::get('/delete/category/{id}', 'DeleteCategory')->name('category.delete');
+
+    });
     
 });
-
-Route::get('/admin/login', [AdminController::class, 'AdminLogin']);
-Route::get('/seller/login', [SellerController::class, 'SellerLogin']);
-
 
 // SELLER
 Route::middleware(['auth','role:seller'])->group(function(){
@@ -63,3 +69,7 @@ Route::middleware(['auth','role:seller'])->group(function(){
     Route::get('/seller/change/password', [SellerController::class, 'SellerChangePassword'])->name('seller.change.password');
     Route::post('/seller/update/password', [SellerController::class, 'SellerUpdatePassword'])->name('update.password');
 });
+
+
+Route::get('/admin/login', [AdminController::class, 'AdminLogin']);
+Route::get('/seller/login', [SellerController::class, 'SellerLogin']);

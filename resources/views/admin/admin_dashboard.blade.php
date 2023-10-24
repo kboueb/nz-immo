@@ -19,12 +19,16 @@
 	<link href="{{ asset('adminbackend/assets/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('adminbackend/assets/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('adminbackend/assets/css/icons.css') }}" rel="stylesheet">
+
+	<link href="{{ asset('adminbackend/assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+
+
 	<!-- Theme Style CSS -->
 	<link rel="stylesheet" href="{{ asset('adminbackend/assets/css/dark-theme.css') }}" />
 	<link rel="stylesheet" href="{{ asset('adminbackend/assets/css/semi-dark.css') }}" />
 	<link rel="stylesheet" href="{{ asset('adminbackend/assets/css/header-colors.css') }}" />
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
-	<title>Rukada - Responsive Bootstrap 5 Admin Template</title>
+	<title>NZ-IMMO</title>
 </head>
 
 <body>
@@ -92,21 +96,42 @@
 	<script src="{{ asset('adminbackend/assets/plugins/sparkline-charts/jquery.sparkline.min.js') }}"></script>
 	<script src="{{ asset('adminbackend/assets/plugins/jquery-knob/excanvas.js') }}"></script>
 	<script src="{{ asset('adminbackend/assets/plugins/jquery-knob/jquery.knob.js') }}"></script>
-	  <script>
-		  $(function() {
-			  $(".knob").knob();
-		  });
-	  </script>
-	  <script src="{{ asset('adminbackend/assets/js/index.js') }}"></script>
+	<script>
+		$(function() {
+			$(".knob").knob();
+		});
+	</script>
+	<script src="{{ asset('adminbackend/assets/js/index.js') }}"></script>
+
+	<script src="{{ asset('adminbackend/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ asset('adminbackend/assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
+	
+	<script>
+		$(document).ready(function() {
+			$('#example').DataTable();
+		} );
+	</script>
+	<script>
+		$(document).ready(function() {
+			var table = $('#example2').DataTable( {
+				lengthChange: false,
+				buttons: [ 'copy', 'excel', 'pdf', 'print']
+			} );
+		
+			table.buttons().container()
+				.appendTo( '#example2_wrapper .col-md-6:eq(0)' );
+		} );
+	</script>
+	
 	<!--app JS-->
 	<script src="{{ asset('adminbackend/assets/js/app.js') }}"></script>
 
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 <script>
- @if(Session::has('message'))
- var type = "{{ Session::get('alert-type','info') }}"
- switch(type){
+@if(Session::has('message'))
+var type = "{{ Session::get('alert-type','info') }}"
+switch(type){
     case 'info':
     toastr.info(" {{ Session::get('message') }} ");
     break;
@@ -122,9 +147,13 @@
     case 'error':
     toastr.error(" {{ Session::get('message') }} ");
     break; 
- }
- @endif 
+}
+@endif 
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script src="{{ asset('adminbackend/assets/js/code.js') }}"></script>
 </body>
 
 </html>

@@ -25,15 +25,11 @@
                 <div class="menu-title">Catégories</div>
             </a>
             <ul>
-                <li> <a href="index.html"><i class="bx bx-right-arrow-alt"></i>Default</a>
+                <li> 
+                    <a href="{{ route('all.categories') }}"><i class="bx bx-right-arrow-alt"></i>Toutes les catégories</a>
                 </li>
-                <li> <a href="dashboard-eCommerce.html"><i class="bx bx-right-arrow-alt"></i>eCommerce</a>
-                </li>
-                <li> <a href="dashboard-analytics.html"><i class="bx bx-right-arrow-alt"></i>Analytics</a>
-                </li>
-                <li> <a href="dashboard-digital-marketing.html"><i class="bx bx-right-arrow-alt"></i>Digital Marketing</a>
-                </li>
-                <li> <a href="dashboard-human-resources.html"><i class="bx bx-right-arrow-alt"></i>Human Resources</a>
+                <li> 
+                    <a href="{{ route('add.category') }}"><i class="bx bx-right-arrow-alt"></i>Ajouter une catégorie</a>
                 </li>
             </ul>
         </li>
