@@ -2,6 +2,12 @@
 
 @section('seller')
 <div class="page-content">
+    @if (Auth::user()->status == 'active')
+        <h4>Votre compte est <span class="text-success text-sm text-bold">ACTIF</span></h4>
+    @else
+        <h4>Votre compte est <span class="text-danger text-sm text-bold">INACTIF</span></h4>
+        <p class="text-danger text-bold">Veuillez attendre la validation de l'administrateur</p>
+    @endif
 
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
         <div class="col">

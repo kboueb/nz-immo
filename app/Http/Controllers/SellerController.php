@@ -83,4 +83,35 @@ class SellerController extends Controller
 
         return back()->with('status', "Mot de passe changé avec succèss!");
     }//end function
+
+    public function BecomeSeller(){
+        return view('auth.become_seller');
+    }
+
+    public function RegisterSeller(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed'],
+        ]);
+
+        $user = User::insert([
+            'name' => $request->name,
+            'email' => $request->email,
+            'username' => $request->username,
+            'phone' => $request->phone,
+            'seller_join' => $request->seller_join,
+            'password' => Hash::make($request->password),
+            'role' => 'seller',
+            'status' => 'inactive',
+        ]);
+ 
+        $notification = array(
+            'message' => 'Connecté avec succès',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('login.seller')->with($notification);
+    }
 }

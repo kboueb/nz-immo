@@ -87,4 +87,52 @@ class AdminController extends Controller
     public function Welcome(){
         return view('welcome');
     }
+
+    public function ActiveSellers() {
+        $seller = User::where('status','active')->where('role','seller')->latest()->get();
+        return view("admin.seller_active", compact('seller'));
+    }//end function
+
+    public function InactiveSellers() {
+        $seller = User::where('status','inactive')->where('role','seller')->latest()->get();
+        return view("admin.seller_inactive", compact('seller'));
+    }//end function
+
+    public function InactiveSellersDetails($id){
+        $seller = User::findOrFail($id);
+        return view('admin.seller_edit_inactive', compact('seller'));
+    }
+
+    public function ActiveSellersDetails($id){
+        $seller = User::findOrFail($id);
+        return view('admin.seller_edit_active', compact('seller'));
+    }
+
+    public function InactiveSellersStore(Request $request){
+        $seller = $request->id;
+        User::findOrFail($seller)->update([
+            'status' => 'active'
+        ]);
+
+        $notification = array(
+            'message' => 'Profil vendeur activé avec succès',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('seller.active')->with($notification);
+    }
+
+    public function ActiveSellersStore(Request $request){
+        $seller = $request->id;
+        User::findOrFail($seller)->update([
+            'status' => 'inactive'
+        ]);
+
+        $notification = array(
+            'message' => 'Profil vendeur désactivé avec succès',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('seller.inactive')->with($notification);
+    }
 }

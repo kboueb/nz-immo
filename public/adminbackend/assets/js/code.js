@@ -20,8 +20,52 @@ $(function(){
             )
         }
         }) 
+    });
 
+    $(document).on('click','#inactive',function(e){
+        e.preventDefault();
+        var link = $(this).attr("href");  
+        Swal.fire({
+        title: 'Êtes-vous sure?',
+        text: "Vous voulez vraiment désactiver ce compte?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Oui, désactiver!'
+        }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = link
+            Swal.fire(
+            'Désactivé!',
+            'Compte désactivé avec succès.',
+            'success'
+            )
+        }
+        }) 
+    });
 
+    $(document).on('click','#active',function(e){
+        e.preventDefault();
+        var link = $(this).attr("href");  
+        Swal.fire({
+        title: 'Êtes-vous sure?',
+        text: "Vous voulez vraiment activer ce compte?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Oui, activer!'
+        }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = link
+            Swal.fire(
+            'Activé!',
+            'Compte activé avec succès.',
+            'success'
+            )
+        }
+        }) 
     });
 
 });
