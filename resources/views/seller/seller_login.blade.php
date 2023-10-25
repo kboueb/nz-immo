@@ -18,7 +18,7 @@
 	<link href="{{ asset('adminbackend/assets/css/bootstrap.min.css') }}" rel="stylesheet">
 	<link href="{{ asset('adminbackend/assets/css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('adminbackend/assets/css/icons.css') }}" rel="stylesheet">
-	<title>Rukada - Responsive Bootstrap 5 Admin Template</title>
+	<title>NZ-IMMO</title>
 </head>
 
 <body class="bg-login">

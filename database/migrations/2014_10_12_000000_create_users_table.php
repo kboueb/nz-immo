@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('photo')->nullable();
             $table->string('phone')->nullable();
+            $table->string('seller_join')->nullable();
+            $table->text('seller_short_info')->nullable();
             $table->text('address')->nullable();
             $table->enum('role', ['admin','seller','user'])->default('user');
             $table->enum('status', ['active','inactive'])->default('active');

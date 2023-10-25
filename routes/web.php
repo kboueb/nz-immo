@@ -55,8 +55,18 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::post('/category/store', 'AddCategory')->name('category.store');
         Route::post('update/category', 'UpdateCategory')->name('category.update');
         Route::get('/delete/category/{id}', 'DeleteCategory')->name('category.delete');
-
     });
+
+    // Seller management
+    Route::controller(AdminController::class)->group(function(){
+        Route::get('/sellers/actives', 'ActiveSellers')->name('seller.active');
+        Route::get('/sellers/inactives', 'InactiveSellers')->name('seller.inactive');
+        Route::get('/sellers/inactives/{id}', 'InactiveSellersDetails')->name('seller.inactive.details');
+        Route::get('/sellers/actives/{id}', 'ActiveSellersDetails')->name('seller.active.details');
+        Route::post('/active/sellers', 'InactiveSellersStore')->name('seller.status.active');
+        Route::post('/inactive/sellers', 'ActiveSellersStore')->name('seller.status.inactive');
+    });
+    
     
 });
 
@@ -72,4 +82,6 @@ Route::middleware(['auth','role:seller'])->group(function(){
 
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin']);
-Route::get('/seller/login', [SellerController::class, 'SellerLogin']);
+Route::get('/seller/login', [SellerController::class, 'SellerLogin'])->name('login.seller');
+Route::get('/become/seller', [SellerController::class, 'BecomeSeller'])->name('become.seller');
+Route::post('/seller/register', [SellerController::class, 'RegisterSeller'])->name('register.seller');
