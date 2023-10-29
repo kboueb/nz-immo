@@ -135,4 +135,5 @@ class AdminController extends Controller
 
         return redirect()->route('seller.inactive')->with($notification);
     }
+    
 }
