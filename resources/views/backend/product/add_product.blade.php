@@ -31,7 +31,7 @@
                             @csrf
                         <div class="mb-3">
                             <label for="product_thumbnail" class="form-label">Titre</label>
-                            <input type="text" class="form-control" id="inputProductTitle" placeholder="Titre de l'annonce" />
+                            <input type="text" name="product_name" class="form-control" id="product_name" placeholder="Titre de l'annonce" />
                         </div>
                         <div class="mb-3">
                             <label for="product_thumbnail" class="form-label">Description de l'offre</label>
@@ -70,7 +70,7 @@
                             <div class="row" id="preview-img"></div>
                         </div>
                         <div class="mb-3">
-                            <input id="special_deal" type="checkbox" class="form-check-input" name="special_deal" multiple />
+                            <input id="special_deal" type="checkbox" class="form-check-input" name="special_deal" value="1" />
                             <label for="special_deal" class="form-check-label">Deal de la semaine?</label>
                         </div>
                         <hr>

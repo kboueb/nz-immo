@@ -49,7 +49,7 @@
                                     <th>{{$item->product_slug}}</th>
                                     <th>{{$item->product_desc}}</th>
                                     <th>{{$item->product_price}}</th>
-                                    <th><img src="{{ asset($item->product_thumnail)}}" alt="image product" width="70px" height="70px"></th>
+                                    <th><img src="{{ asset($item->product_thumbnail)}}" alt="image product" width="70px" height="70px"></th>
                                     <th>{{$item->product_status}}</th>
                                     <td>
                                         <a href="{{ route('product.edit', $item->id)}}" class="btn btn-warning">Modifier</a>
