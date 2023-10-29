@@ -28,6 +28,8 @@
 	<link rel="stylesheet" href="{{ asset('adminbackend/assets/css/semi-dark.css') }}" />
 	<link rel="stylesheet" href="{{ asset('adminbackend/assets/css/header-colors.css') }}" />
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+	<link href="{{ asset('adminbackend/assets/plugins/Drag-And-Drop/dist/imageuploadify.min.css" rel="stylesheet') }}" />
+
 	<title>NZ-IMMO</title>
 </head>
 
@@ -122,9 +124,6 @@
 				.appendTo( '#example2_wrapper .col-md-6:eq(0)' );
 		} );
 	</script>
-	
-	<!--app JS-->
-	<script src="{{ asset('adminbackend/assets/js/app.js') }}"></script>
 
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
@@ -154,6 +153,27 @@ switch(type){
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <script src="{{ asset('adminbackend/assets/js/code.js') }}"></script>
+
+{{-- <script src="{{ asset('adminbackend/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
+<script src="{{ asset('adminbackend/assets/plugins/Drag-And-Drop/dist/imageuploadify.min.js') }}"></script> --}}
+
+<script src='https://cdn.tiny.cloud/1/vdqx2klew412up5bcbpwivg1th6nrh3murc6maz8bukgos4v/tinymce/5/tinymce.min.js' referrerpolicy="origin">
+</script>
+
+<script>
+tinymce.init({
+	selector: '#mytextarea'
+});
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#image-uploadify').imageuploadify();
+    })
+</script>
+
+<!--app JS-->
+<script src="{{ asset('adminbackend/assets/js/app.js') }}"></script>
 </body>
 
 </html>

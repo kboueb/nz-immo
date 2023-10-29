@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\backend\CategoryController;
+use App\Http\Controllers\backend\ProductController;
 use App\Http\Controllers\SellerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -65,6 +66,16 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/sellers/actives/{id}', 'ActiveSellersDetails')->name('seller.active.details');
         Route::post('/active/sellers', 'InactiveSellersStore')->name('seller.status.active');
         Route::post('/inactive/sellers', 'ActiveSellersStore')->name('seller.status.inactive');
+    });
+
+    // Products (Les annonces)
+    Route::controller(ProductController::class)->group(function(){
+        Route::get('/all/products', 'AllProducts')->name('all.products');
+        Route::get('/add/product', 'AddProduct')->name('add.product');
+        Route::get('/edit/product/{id}', 'EditProduct')->name('product.edit');
+        Route::post('/product/store', 'AddProductStore')->name('product.store');
+        Route::post('update/product', 'UpdateProduct')->name('product.update');
+        Route::get('/delete/product/{id}', 'DeleteProduct')->name('product.delete');
     });
     
     

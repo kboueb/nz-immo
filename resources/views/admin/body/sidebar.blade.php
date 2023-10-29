@@ -20,7 +20,7 @@
         </li>
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class='bx bx-home-circle'></i>
+                <div class="parent-icon"><i class='bx bx-category'></i>
                 </div>
                 <div class="menu-title">Catégories</div>
             </a>
@@ -37,7 +37,7 @@
         
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class='bx bx-cart'></i>
+                <div class="parent-icon"><i class='bx bx-user'></i>
                 </div>
                 <div class="menu-title">Vendeurs</div>
             </a>
@@ -45,6 +45,19 @@
                 <li> <a href="{{route('seller.active')}}"><i class="bx bx-right-arrow-alt"></i>Actifs</a>
                 </li>
                 <li> <a href="{{route('seller.inactive')}}"><i class="bx bx-right-arrow-alt"></i>Inactifs</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class='bx bx-category'></i>
+                </div>
+                <div class="menu-title">Les annonces</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('all.products') }}"><i class="bx bx-right-arrow-alt"></i>Lister les annonces</a>
+                </li>
+                <li> <a href="{{ route('add.product') }}"><i class="bx bx-right-arrow-alt"></i>Ajouter une annonce</a>
                 </li>
             </ul>
         </li>
