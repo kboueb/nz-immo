@@ -65,4 +65,11 @@ class ProductController extends Controller
 
         return redirect()->route('all.products')->with($notification);
     }
+
+    public function EditProduct($id){
+        $seller = User::where('status','active')->where('role','seller')->latest()->get();
+        $cat = Category::latest()->get();
+        $product = Product::findOrFail($id);
+        return view('backend.product.edit_product', compact('product', 'cat', 'seller'));
+    }
 }

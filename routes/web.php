@@ -73,6 +73,7 @@ Route::middleware(['auth','role:admin'])->group(function(){
         Route::get('/all/products', 'AllProducts')->name('all.products');
         Route::get('/add/product', 'AddProduct')->name('add.product');
         Route::get('/edit/product/{id}', 'EditProduct')->name('product.edit');
+        Route::get('/show/product/{id}', 'ShowProduct')->name('product.show');
         Route::post('/product/store', 'AddProductStore')->name('product.store');
         Route::post('update/product', 'UpdateProduct')->name('product.update');
         Route::get('/delete/product/{id}', 'DeleteProduct')->name('product.delete');
