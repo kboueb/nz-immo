@@ -22,7 +22,7 @@
         </div>
     </div>
     <!--end breadcrumb-->
-    <h6 class="mb-0 text-uppercase">Liste des annonces</h6>
+    <h6 class="mb-0 text-uppercase">Liste des annonces : <span class="badge rounded-pill bg-primary">{{ count($product) }}</span></h6>
     <hr/>
     <div class="card">
         <div class="card-body">
@@ -31,11 +31,11 @@
                     <thead>
                         <tr>
                             <th>ID</th>
+                            <th>Image</th>
                             <th>Nom</th>
                             <th>Slug</th>
                             <th>Desc</th>
                             <th>Prix</th>
-                            <th>Image</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -45,15 +45,23 @@
                             @foreach ($product as $item)
                                 <tr>    
                                     <td>{{ $item->id }}</td>
+                                    <th><img src="{{ asset($item->product_thumbnail)}}" alt="image product" width="70px" height="70px"></th>
                                     <td>{{ $item->product_name }}</td>
                                     <th>{{$item->product_slug}}</th>
                                     <th>{{$item->product_desc}}</th>
-                                    <th>{{$item->product_price}}</th>
-                                    <th><img src="{{ asset($item->product_thumbnail)}}" alt="image product" width="70px" height="70px"></th>
-                                    <th>{{$item->product_status}}</th>
+                                    <th>{{$item->product_price}} FCFA</th>
+                                    <th>
+                                        @if ($item->product_status == 1)
+                                            <span class="badge rounded-pill bg-success">Actif</span>
+                                        @else
+                                            <span class="badge rounded-pill bg-danger">Inactif</span>
+                                        @endif
+                                    </th>
+                                    
                                     <td>
-                                        <a href="{{ route('product.edit', $item->id)}}" class="btn btn-warning">Modifier</a>
-                                        <a href="{{ route('product.delete', $item->id)}}" class="btn btn-danger" id="delete">Supprimer</a>
+                                        <a href="{{ route('product.edit', $item->id)}}" class="btn btn-warning text-white" title="Modifier"><i class="py-3 bx bx-pencil"></i></a>
+                                        <a href="{{ route('product.show', $item->id)}}" class="btn btn-primary text-white" title="Voir la fiche"><i class="py-3 bx bx-file"></i></a>
+                                        <a href="{{ route('product.delete', $item->id)}}" class="btn btn-danger" id="delete" title="Supprimer"><i class="py-3 bx bx-trash"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
