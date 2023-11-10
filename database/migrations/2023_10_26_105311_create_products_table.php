@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('product_slug');
             $table->text('product_desc');
             $table->string('product_price');
+            $table->integer('nbre_pieces');
             $table->string('product_thumbnail');
             $table->integer('product_status')->default(0);
             $table->integer('special_deal')->nullable();

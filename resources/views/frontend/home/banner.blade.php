@@ -1,39 +1,23 @@
 <section class="banners mb-25">
     <div class="container">
+        @php
+            $categories = App\Models\Category::orderBy('cat_name', 'ASC')->get();
+        @endphp
         <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="banner-img wow animate__animated animate__fadeInUp" data-wow-delay="0">
-                    <img src="{{ asset('frontend/assets/imgs/banner/banner-1.png') }}" alt="" />
-                    <div class="banner-text">
-                        <h4>
-                            Everyday Fresh & <br />Clean with Our<br />
-                            Products
-                        </h4>
-                        <a href="shop-grid-right.html" class="btn btn-xs">Shop Now <i class="fi-rs-arrow-small-right"></i></a>
+            @foreach ($categories as $cat)
+                <div class="col-lg-4 col-md-6">
+                    <div class="banner-img wow animate__animated animate__fadeInUp" data-wow-delay="0">
+                        <img src="{{ asset('frontend/assets/imgs/banner/banner.svg') }}" alt="" />
+                        <div class="banner-text">
+                            <h4 class="">{{ $cat->cat_name }}</h4>
+                            @php
+                                $products = App\Models\Product::where('category_id', $cat->id)->get();
+                            @endphp
+                            <a href="shop-grid-right.html" class="btn btn-xs">{{count($products)}} annonce(s) <i class="fi-rs-arrow-small-right"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="banner-img wow animate__animated animate__fadeInUp" data-wow-delay=".2s">
-                    <img src="{{ asset('frontend/assets/imgs/banner/banner-2.png') }}" alt="" />
-                    <div class="banner-text">
-                        <h4>
-                            Make your Breakfast<br />
-                            Healthy and Easy
-                        </h4>
-                        <a href="shop-grid-right.html" class="btn btn-xs">Shop Now <i class="fi-rs-arrow-small-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 d-md-none d-lg-flex">
-                <div class="banner-img mb-sm-0 wow animate__animated animate__fadeInUp" data-wow-delay=".4s">
-                    <img src="{{ asset('frontend/assets/imgs/banner/banner-3.png') }}" alt="" />
-                    <div class="banner-text">
-                        <h4>The best Organic <br />Products Online</h4>
-                        <a href="shop-grid-right.html" class="btn btn-xs">Shop Now <i class="fi-rs-arrow-small-right"></i></a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>

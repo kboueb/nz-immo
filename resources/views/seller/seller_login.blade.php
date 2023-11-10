@@ -35,7 +35,7 @@
 							<div class="card-body">
 								<div class="border p-4 rounded">
 									<div class="text-center">
-										<h3 class="">Compte Vendeur</h3>
+										<h3 class="">Compte Propriétaire</h3>
 										<p>Vous n'avez pas encore de compte? <a href="authentication-signup.html">Enregistrez-vous ici</a>
 										</p>
 									</div>

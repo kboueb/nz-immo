@@ -21,7 +21,7 @@
 
     <div class="card">
         <div class="card-body p-4">
-            <h5 class="card-title">Add New Product</h5>
+            <h5 class="card-title">Ajout d'un Bien</h5>
             <hr/>
             <div class="form-body mt-4">
             <div class="row">
@@ -31,15 +31,19 @@
                             @csrf
                         <div class="mb-3">
                             <label for="product_thumbnail" class="form-label">Titre</label>
-                            <input type="text" name="product_name" class="form-control" id="product_name" placeholder="Titre de l'annonce" />
+                            <input type="text" name="product_name" class="form-control" id="product_name" placeholder="Titre du bien" />
                         </div>
                         <div class="mb-3">
-                            <label for="product_thumbnail" class="form-label">Description de l'offre</label>
+                            <label for="product_thumbnail" class="form-label">Description</label>
                             <textarea id="mytextarea" class="form-control" name="product_desc">Desciption</textarea>
                         </div>
                         <div class="mb-3">
                             <label for="product_thumbnail" class="form-label">Prix</label>
-                            <input type="text" class="form-control" id="product_price" name="product_price" placeholder="50.000 F" />
+                            <input type="text" class="form-control" id="product_price" name="product_price" placeholder="50000" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="product_thumbnail" class="form-label">Nombre de pièces</label>
+                            <input type="number" class="form-control" id="nbre_pieces" name="nbre_pieces" placeholder="2" />
                         </div>
 
                         <div class="mb-3">
@@ -52,7 +56,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="seller_id" class="form-label">Vendeur</label>
+                            <label for="seller_id" class="form-label">Propriétaire</label>
                             <select class="form-select" id="seller_id" name="seller_id">
                                 @foreach ($seller as $item)
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -64,18 +68,22 @@
                             <label for="product_thumbnail" class="form-label">Image principale</label>
                             <input id="product_thumbnail" class="form-control" name="product_thumbnail" type="file"/>
                         </div>
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <label for="formFile" class="form-label">Galerie d'images</label>
-                            <input id="multiImg" class="form-control" type="file" name="multi_img[]" multiple />
+                            <input id="multiImg" class="form-control" type="file" name="multi_img" multiple="" />
+                            <input id="multiImg2" class="form-control" type="file" name="multi_img2" multiple="" />
+                            <input id="multiImg3" class="form-control" type="file" name="multi_img3" multiple="" />
                             <div class="row" id="preview-img"></div>
-                        </div>
+                            <div class="row" id="preview-img2"></div>
+                            <div class="row" id="preview-img3"></div>
+                        </div> --}}
                         <div class="mb-3">
                             <input id="special_deal" type="checkbox" class="form-check-input" name="special_deal" value="1" />
                             <label for="special_deal" class="form-check-label">Deal de la semaine?</label>
                         </div>
                         <hr>
                         <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">Enregistrer l'annonce</button>
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
                         </div>
                         </form>
                     </div>
@@ -88,7 +96,7 @@
 <script>
 
 $(document).ready(function(){
-$('#multiImg').on('change', function(){ //on file input change
+$('#multiImg, #multiImg2, #multiImg3').on('change', function(){ //on file input change
     if (window.File && window.FileReader && window.FileList && window.Blob) //check File API supported browser
     {
         var data = $(this)[0].files; //this file data
@@ -100,7 +108,9 @@ $('#multiImg').on('change', function(){ //on file input change
                 return function(e) {
                     var img = $('<img/>').addClass('thumb').attr('src', e.target.result) .width(100)
                 .height(80); //create image element 
-                    $('#preview_img').append(img); //append image to output element
+                    $('#preview-img').append(img); //append image to output element
+                    $('#preview-img2').append(img); //append image to output element
+                    $('#preview-img3').append(img); //append image to output element
                 };
                 })(file);
                 fRead.readAsDataURL(file); //URL representing the file's data.
