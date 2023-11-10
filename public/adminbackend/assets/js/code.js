@@ -68,4 +68,27 @@ $(function(){
         }) 
     });
 
+    $(document).on('click','#delete-slide',function(e){
+        e.preventDefault();
+        var link = $(this).attr("href");  
+        Swal.fire({
+        title: 'Êtes-vous sure?',
+        text: "Vous voulez vraiment supprimer ce slide?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Oui, Supprimer!'
+        }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = link
+            Swal.fire(
+            'Supprimé!',
+            'slide supprimé avec succès.',
+            'success'
+            )
+        }
+        }) 
+    });
+
 });

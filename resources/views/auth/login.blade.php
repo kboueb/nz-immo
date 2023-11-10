@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Nest - Multipurpose eCommerce HTML Template</title>
+    <title>NZ-IMMO</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,7 +12,7 @@
     <meta property="og:url" content="" />
     <meta property="og:image" content="" />
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/assets/imgs/theme/favicon.svg') }}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/assets/imgs/theme/logo.png') }}" />
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/plugins/animate.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/main.css?v=5.3') }}" />
@@ -51,15 +51,15 @@
                                     <div class="padding_eight_all bg-white">
                                         <div class="heading_s1">
                                             <h1 class="mb-5">Login</h1>
-                                            <p class="mb-30">Pas encore de compte?<a href="{{ route('register') }}">Cliquer ici</a></p>
+                                            <p class="mb-30">Pas encore de compte? <a href="{{ route('register') }}">Cliquer ici</a></p>
                                         </div>
                                         <form method="POST" action="{{ route('login') }}">
                                             @csrf
                                             <div class="form-group">
-                                                <input type="email" required="" id="email" name="email" placeholder="Username or Email *" />
+                                                <input type="email" required="" id="email" name="email" placeholder="E-mail *" />
                                             </div>
                                             <div class="form-group">
-                                                <input required="" type="password" id="password" name="password" placeholder="Your password *" />
+                                                <input required="" type="password" id="password" name="password" placeholder="Mot de passe*" />
                                             </div>
                                             <div class="login_footer form-group mb-50">
                                                 <div class="chek-form">

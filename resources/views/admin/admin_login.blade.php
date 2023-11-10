@@ -36,8 +36,8 @@
 								<div class="border p-4 rounded">
 									<div class="text-center">
 										<h3 class="">Compte Admin</h3>
-										<p>Vous n'avez pas encore de compte? <a href="authentication-signup.html">Enregistrez-vous ici</a>
-										</p>
+										{{-- <p>Vous n'avez pas encore de compte? <a href="authentication-signup.html">Enregistrez-vous ici</a>
+										</p> --}}
 									</div>
 									<div class="form-body">
 										<form action="{{ route('login') }}" method="POST" class="row g-3">
